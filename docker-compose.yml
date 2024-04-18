@@ -11,8 +11,8 @@ services:
       - ./pgdata:/var/lib/postgresql/data
     ports:
       - '5432:5432'
-    # networks:
-    #   - my_network
+    networks:
+      - my_network
 
   app:
     build:
@@ -27,8 +27,8 @@ services:
       - db
     volumes:
       - ./src:/app/src
-    # networks:
-    #   - my_network
+    networks:
+      - my_network
 
   pgadmin:
     image: dpage/pgadmin4
@@ -42,9 +42,9 @@ services:
     depends_on:
       - db
 
-#     networks:
-#       - my_network
+    networks:
+      - my_network
 
-# networks:
-#   my_network:
-#     external: true
+networks:
+  my_network:
+    external: true
